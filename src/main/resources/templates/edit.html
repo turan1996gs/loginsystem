@@ -1,0 +1,55 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Edit User</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+    <script src="//cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
+
+    <script>
+        $(document).ready( function () {
+            $('#studentTable').DataTable();
+        });
+    </script>
+
+    <style>
+        #register_form{
+            width:300px;
+            margin:auto;
+            box-shadow:1px 1px 10px grey;
+            padding:20px 10px 20px 10px;
+        }
+
+        input{
+            margin-top:10px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="row" style="margin-top: 100px;">
+    <div class="col-md-3">
+        <form action="#" id="register_form" th:action="@{'/users/' + ${user.id} + '/update'}" th:object="${user}" method="post">
+            <h1>Edit User</h1>
+            <input type="text" class="form-control" th:value="${user.getUsername()}" placeholder="Username" th:field="*{username}">
+            <input class="form-control" type="text" th:value="${user.getEmail()}" placeholder="Email" th:field="*{email}" />
+            <input class="form-control" type="text" th:value="${user.getPassword()}" placeholder="Password" th:field="*{password}" />
+            <input class="form-control" type="text" th:value="${user.getConfirm_password()}" placeholder="Confirm Password" th:field="*{confirm_password}" />
+            <input class="btn btn-success" type="submit" value="Submit" />
+        </form>
+
+
+    </div>
+
+    <div class="col-md-9">
+
+    </div>
+
+</div>
+
+</body>
+</html>
